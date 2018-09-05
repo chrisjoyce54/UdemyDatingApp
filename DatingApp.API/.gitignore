@@ -1,0 +1,11 @@
+.vscode
+bin
+obj
+.db
+.suo
+db.lock
+.dtbcache
+storage.ide
+storage.ide-shm
+..\.vs
+
