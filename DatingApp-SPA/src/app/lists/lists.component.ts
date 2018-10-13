@@ -16,7 +16,6 @@ export class ListsComponent implements OnInit {
   pagination: Pagination;
   likesParam: string;
 
-
   constructor(private authService: AuthService, private userService: UserService,
     private route: ActivatedRoute, private alertify: AlertifyService) { }
 
@@ -27,6 +26,7 @@ export class ListsComponent implements OnInit {
     });
     this.likesParam = 'Likers';
   }
+
   loadUsers() {
     this.userService
       .getUsers(this.pagination.currentPage, this.pagination.itemsPerPage, null, this.likesParam)
