@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
@@ -45,5 +46,17 @@ export class AuthService {
   loggedIn() {
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
+  }
+  roleMatch(allowedRoles): boolean {
+    let isMatch = false;
+    const userRoles = this.decodedToken.role as Array<string>;
+    // tslint:disable-next-line:no-shadowed-variable
+    allowedRoles.forEach(element => {
+      if (userRoles.includes(element)){
+        isMatch = true;
+        return;
+      }
+    });
+    return isMatch;
   }
 }
